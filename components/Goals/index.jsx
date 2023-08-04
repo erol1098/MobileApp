@@ -2,10 +2,6 @@ import { FlatList, StyleSheet, Text, View } from 'react-native';
 import Goal from './Goal';
 
 const Goals = ({ goals = [], setGoals = () => {} }) => {
-  const handleDeleteGoal = (index) => {
-    const newGoals = goals.filter((_, i) => i !== index);
-    setGoals(newGoals);
-  };
   return (
     <View style={styles.goalsContainer}>
       <FlatList
@@ -13,7 +9,7 @@ const Goals = ({ goals = [], setGoals = () => {} }) => {
         alwaysBounceVertical={false}
         keyExtractor={(item, index) => index.toString()}
         renderItem={(itemData) => (
-          <Goal itemData={itemData} handleDeleteGoal={handleDeleteGoal} />
+          <Goal itemData={itemData} setGoals={setGoals} />
         )}
       />
     </View>
